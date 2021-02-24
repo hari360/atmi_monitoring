@@ -1,4 +1,27 @@
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div> -->
+
+
+
 <section class="content">
+
+<?php 
+            $flashmessage = $this->session->flashdata('messageinsertflm'); 
+            if (isset($flashmessage)) { 
+          ?>
+            <div class="alert alert-success" >
+                <strong>Well done!</strong> FLM Has Been Submit Succesfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          <?php } ?>
+
+
 
 <?php $this->load->view($header_view);?>
     <!-- <div class="block-header">

@@ -40,6 +40,7 @@ class Terminalcardbase extends MY_Controller
       'content_view'        => 'terminal/cardbase',
       'sub_header_title'    => 'Terminal Monitoring',
       'header_title'        => 'CARDBASE',
+      'alert_flm'           => false,
       'username'            => $this->session->userdata('logged_full_name'),
       'lastlogin'           => $this->session->userdata('logged_last_login'),
     );
@@ -262,6 +263,7 @@ class Terminalcardbase extends MY_Controller
             
         );
     $insert = $this->Postilion_model->save($data,$vTable);
+    $this->session->set_flashdata('messageinsertflm', "User ID has been inserted.");
     echo json_encode(array("status" => TRUE));
   }
 

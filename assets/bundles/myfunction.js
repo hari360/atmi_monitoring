@@ -22,7 +22,7 @@ function add_person(value_this,prm1,prm2){
     }
 
     if(prm2=='Modify' && (value_this=='FLM' || value_this=='SLM')){
-      alert(pTerminalID);
+      // alert(pTerminalID);
       get_data_flm_slm(pTerminalID);
     }
 
