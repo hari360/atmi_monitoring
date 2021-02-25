@@ -64,4 +64,8 @@ class Log extends MY_Controller
     echo json_encode($data);
   }
 
+  function ajax_get_history_offline_crm($term_id){
+    $data = $this->Log_model->get_data_offline_history_crm($term_id);
+    echo json_encode($data);
+  }
 }

@@ -139,8 +139,8 @@ $(document).ready(function(){
     paging: true, 
     info: true, 
     searching: true,
-    scrollY:        "350px",
-    scrollX:        true,
+    // scrollY:        "350px",
+    // scrollX:        true,
   });
 
   var table = $('#dt_terminal_log').DataTable({
@@ -190,5 +190,55 @@ $(document).ready(function(){
         tr.addClass('shown');
     }
   });
+
+
+
+  var table = $('#dt_terminal_log_crm').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+});
+
+$('#dt_terminal_log_crm tbody').on('click', 'td.details-control', function () {
+  var tr = $(this).closest('tr');
+  var row = table.row( tr );
+  var html = '';
+  var arr_offline = [];
+  var arr_inservice = [];
+  var datetime_offline = '';
+  var datetime_inservice = '';
+  var value_duration = '';
+  v_global_1 = '';
+  v_global_2 = '';
+
+  if ( row.child.isShown() ) {
+      row.child.hide();
+      tr.removeClass('shown');
+  }
+  else {
+               
+      var v_terminal_id = $(this).attr("title");                      
+      var v_url = baseURL + "log/ajax_get_history_offline_crm/" + v_terminal_id; 
+      $.ajax({
+          url : v_url,
+          type: "GET",
+          async: false,
+          dataType: "JSON",
+          success: function(result)
+          {            
+              $.each(result, function (i, item) {  
+                v_global_1 += '<tr><td>'+item.event_id+'</td><td>'+item.date_time+'</td><td ' + (item.description_event == 'The ATM changed mode from In Service to Off-Line. ' ? 'style="color:red;font-weight:bold"' : (item.description_event == 'The ATM changed mode from Closed to In Service. ' ? 'style="color:green;font-weight:bold"' : '')) + '>'+item.description_event+'</td></tr>' ;
+              });
+          },
+          error: function (jqXHR, textStatus, errorThrown)
+          {
+              alert('Error get data from ajax');
+          }
+      });      
+      row.child( format(row.data()) ).show();
+      tr.addClass('shown');
+  }
+});
 
 });

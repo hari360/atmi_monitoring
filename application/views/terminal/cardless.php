@@ -1,5 +1,17 @@
 <section class="content">
 
+<?php 
+            $flashmessage = $this->session->flashdata('messageinsertflm'); 
+            if (isset($flashmessage)) { 
+          ?>
+            <div class="alert alert-success" >
+                <strong>Well done!</strong> FLM Has Been Submit Succesfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+          <?php } ?>
+
 <?php $this->load->view($header_view);?>
     <!-- <div class="block-header">
         <div class="row">
@@ -34,7 +46,7 @@
             <div class="card">
                         <ul class="nav nav-tabs pl-0 pr-0">
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_terminal">Terminal</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_card_retain">Card Retain</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_card_retain">Card Retain</a></li> -->
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_log">Log</a></li>
                         </ul>
                 <div class="tab-content">
@@ -50,19 +62,19 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane file_manager" id="tab_card_retain">
+                    <!-- <div class="tab-pane file_manager" id="tab_card_retain">
                         <div class="container-fluid">
                             <div class="row clearfix">
 
                             </div> 
                         </div>
-                    </div>
+                    </div> -->
                     <div class="tab-pane" id="tab_log">
                         <div class="container-fluid">        
                             <div class="row clearfix">
                                 <div class="body" style="width: 100%;">
                                     <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
-                                        <!-- <?php echo ! empty($table_log) ? $table_log : '';?> -->
+                                        <?php echo ! empty($table_log) ? $table_log : '';?>
                                     </div>
                                 </div>
                             </div>
@@ -131,3 +143,18 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<style>
+    td.details-control {
+        background: url('<?php echo base_url();?>assets/images/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+    tr.shown td.details-control {
+    background: url('<?php echo base_url();?>assets/images/details_close.png') no-repeat center center;
+    }
+
+    table.dataTable tbody th, table.dataTable tbody td {
+    padding: 8px; /* e.g. change 8x to 4px here */
+    }
+</style>
