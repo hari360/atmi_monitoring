@@ -17,7 +17,7 @@
                                             <h6 style="color:black">ALL TERMINAL</h6>
                                             <h2 style="color:black"><?php echo $all_terminal; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@
                                             <h6 style="color:black">OFFLINE</h6>
                                             <h2 style="color:black"><?php echo $offline; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>offline/detail" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                             <h6 style="color:black">CLOSE</h6>
                                             <h2 style="color:black"><?php echo $close; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                             <h6 style="color:black">IN SERVICE</h6>
                                             <h2 style="color:black"><?php echo $inservice; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                             <h6 style="color:black">CARD RETAIN</h6>
                                             <h2 style="color:black"><?php echo $cardretain; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                             <h6 style="color:black">SALDO < 2 MILLION</h6>
                                             <h2 style="color:black"><?php echo $saldomin; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                             <h6 style="color:black">TRAN IDLE</h6>
                                             <h2 style="color:black"><?php echo $tranidle; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                             <h6 style="color:black">FAULTY</h6>
                                             <h2 style="color:black"><?php echo $faulty; ?></h2>
                                             <hr/>
-                                            <a href="#" style="color:white"><small>Details</small></a>
+                                            <a href="<?php echo base_url();?>terminalcardbase/terminal_monitor" style="color:white"><small>Details</small></a>
                                         </div>
                                     </div>
                                 </div>

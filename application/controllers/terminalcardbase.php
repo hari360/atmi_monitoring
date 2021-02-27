@@ -33,7 +33,7 @@ class Terminalcardbase extends MY_Controller
 
   function card_retain_cardbase(){
     $tmpl = array(
-      'table_open'    => '<table class="table table-bordered table-striped table-hover nowrap" id="dt_card_retain_cardbase" width="100%">',
+      'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_card_retain_cardbase" width="100%">',
       'thead_open'            => '<thead>',
       'thead_close'           => '</thead>',
       'heading_row_start'   => '<tr>',
@@ -46,19 +46,27 @@ class Terminalcardbase extends MY_Controller
     $this->table->set_template($tmpl);
     $this->table->set_empty("&nbsp;");
     $this->table->set_heading(
-      'ATM ID',
-      'Terminal Name',
-      'Condition',
-      'Mode',
-      'Denom',
-      'Admin',
-      'Amount Bar',
-      'Percentage',
-      'Jarkon',
-      'CIT',
-      // 'Detail',
-      'FLM/SLM'
+              'ATM ID', 
+              'ATM Name', 
+              'Card Count', 
+              'Kelola'
     );
+
+    $card_retain_data = $this->Postilion_model->get_card_retain();
+    // $terms_2 = $this->Postilion_model->term_monitor_offset_temp($this->session->userdata('logged_user_name'));
+
+    foreach ($card_retain_data as $data_card_retain)
+    {
+      
+      $this->table->add_row($data_card_retain->id, 
+                            $data_card_retain->short_name,
+                            $data_card_retain->count_card,
+                            $data_card_retain->kelola
+                          );  
+
+    }  
+
+
   }
 
   function index()
@@ -212,7 +220,7 @@ class Terminalcardbase extends MY_Controller
 
       $this->table->add_row(
         // $cell_extends,
-        $term->id,
+        '<a href="#">'.$term->id.'</a>',
         $term->short_name,
         $str_condition,
         '<div style=color:white;float:left;display:none>' . substr($mode[0], 0, 1) . '</div>' . $v_off,
@@ -229,6 +237,9 @@ class Terminalcardbase extends MY_Controller
     }
 
     $data['table_cardbase'] = $this->table->generate();
+
+    $this->card_retain_cardbase();
+    $data['table_card_retain'] = $this->table->generate();
 
     $terms = $this->Log_model->get_terminal();
 

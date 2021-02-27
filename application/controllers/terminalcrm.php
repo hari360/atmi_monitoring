@@ -106,10 +106,10 @@ class Terminalcrm extends MY_Controller
                                 $str_condition = 'OK';
                                 break;
                             case "1":
-                                $str_condition = array('data' => 'CRITICAL', 'style' => 'background:red;font-weight: bold;color:black');
+                                $str_condition = array('data' => 'CRITICAL', 'style' => 'background:#C82333;font-weight: bold;color:black');
                                 break;
                             case "2":
-                                $str_condition = array('data' => 'SUSPECT', 'style' => 'background:yellow;font-weight: bold;color:black');
+                                $str_condition = array('data' => 'SUSPECT', 'style' => 'background:#E0A800;font-weight: bold;color:black');
                                 break;
                         }
                     }                    
@@ -119,10 +119,10 @@ class Terminalcrm extends MY_Controller
                                 $str_condition = 'OK';
                                 break;
                             case "1":
-                                $str_condition = array('data' => 'CRITICAL', 'style' => 'background:red;font-weight: bold;color:black');
+                                $str_condition = array('data' => 'CRITICAL', 'style' => 'background:#C82333;font-weight: bold;color:black');
                                 break;
                             case "2":
-                                $str_condition = array('data' => 'SUSPECT', 'style' => 'background:yellow;font-weight: bold;color:black');
+                                $str_condition = array('data' => 'SUSPECT', 'style' => 'background:#E0A800;font-weight: bold;color:black');
                                 break;
                         }
                     }
@@ -156,17 +156,17 @@ class Terminalcrm extends MY_Controller
         //$persen50 = '<font color="red">'.$persen50.'</font>';
 
         if((round($persen50,2) < 20) || (round($persen50,2) > 90))  {
-            $str_condition_denom_50 = array('data' => round($persen50,2).' %', 'style' => 'background:red;font-weight: bold;color:black');
+            $str_condition_denom_50 = array('data' => round($persen50,2).' %', 'style' => 'background:#C82333;font-weight: bold;color:white');
         }elseif(((round($persen50,2) > 20) && (round($persen50,2) < 25)) || ((round($persen50,2) > 85) && (round($persen50,2) < 90)))  {
-            $str_condition_denom_50 = array('data' => round($persen50,2).' %', 'style' => 'background:yellow;font-weight: bold;color:black');
+            $str_condition_denom_50 = array('data' => round($persen50,2).' %', 'style' => 'background:#E0A800;font-weight: bold;color:black');
         }else{
             $str_condition_denom_50 = round($persen50,2).' %';
         }
 
         if((round($persen100,2) < 20) || (round($persen100,2) > 90))  {
-            $str_condition_denom_100 = array('data' => round($persen100,2).' %', 'style' => 'background:red;font-weight: bold;color:black');
+            $str_condition_denom_100 = array('data' => round($persen100,2).' %', 'style' => 'background:#C82333;font-weight: bold;color:white');
         }elseif(((round($persen100,2) > 20) && (round($persen100,2) < 25)) || ((round($persen100,2) > 85) && (round($persen100,2) < 90)))  {
-            $str_condition_denom_100 = array('data' => round($persen100,2).' %', 'style' => 'background:yellow;font-weight: bold;color:black');
+            $str_condition_denom_100 = array('data' => round($persen100,2).' %', 'style' => 'background:#E0A800;font-weight: bold;color:black');
         }else{
             $str_condition_denom_100 = round($persen100,2).' %';
         }

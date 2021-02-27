@@ -76,4 +76,24 @@ class Postilion_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    function get_card_retain(){
+        return $this->db->get('v_card_retain')->result();
+    }
+
+    function get_offline_term(){
+        return $this->db->get('v_terminal_offline')->result();
+    }
+
+    function get_closed_term(){
+        return $this->db->get('v_terminal_closed')->result();
+    }
+
+    function get_inservice_term(){
+        return $this->db->get('v_terminal_inservice')->result();
+    }
+
+    function get_time_saldo() {
+        $query = $this->db->query("exec sp_history_saldo_getall");
+        return $query->result();
+    }
 }

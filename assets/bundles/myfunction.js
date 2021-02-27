@@ -134,6 +134,61 @@ $(document).ready(function(){
     searching: true,
   });
 
+  var table_card_retain = $('#dt_card_retain_cardbase').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    columnDefs: [
+      { width: '20%', targets: 0 }
+    ],
+    fixedColumns: true,
+  });
+
+  var table_card_retain = $('#dt_offline').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    columnDefs: [
+      { width: '20%', targets: 0 }
+    ],
+    fixedColumns: true,
+  });
+
+  var table_closed = $('#dt_closed').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    columnDefs: [
+      { width: '20%', targets: 0 }
+    ],
+    fixedColumns: true,
+  });
+
+  var table_inservice = $('#dt_inservice').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    columnDefs: [
+      { width: '20%', targets: 0 }
+    ],
+    fixedColumns: true,
+  });
+
+  var table_inservice = $('#dt_term_idle').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    columnDefs: [
+      { width: '20%', targets: 0 }
+    ],
+    fixedColumns: true,
+  });
+
   var table_cardbase = $('#dt_terminal_crm').DataTable({
     iDisplayLength:100,
     paging: true, 
