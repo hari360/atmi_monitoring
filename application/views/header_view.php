@@ -12,7 +12,7 @@
             <div class="col-lg-5 col-md-6 col-sm-12">   
             <div class="float-right">
                     <div class="chat-about">
-                        <div class="chat-with"><?php echo isset($username) ? $username : '';?> </strong> &nbsp;| &nbsp;<a href="<?php echo base_url();?>login/logout">Logout</a></div>
+                        <div class="chat-with"><strong id="usrLogin"><?php echo isset($username) ? $username : '';?> </strong> &nbsp;| &nbsp;<a href="<?php echo base_url();?>login/logout">Logout</a></div>
                         <div class="chat-num-messages"><small>Last Login: <?php echo isset($lastlogin) ? $lastlogin : '';?></small></div>
                     </div>
             </div>             

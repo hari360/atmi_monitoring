@@ -34,6 +34,30 @@ class Postilion_model extends CI_Model {
         return $this->db->insert_id();
     }
 
+    public function update($where, $data)
+    {
+        $this->db->update('tbl_flm', $data, $where);
+        return $this->db->affected_rows();
+    }
+
+    function update_status_flm($term_id)
+    {
+        $data = array(
+                'status_flm' => 'OK',  
+                'date_time_ok' => date('Y-m-d H:i:s'),
+            );
+        $this->db->update('tbl_flm', $data, array('terminal_id' => $term_id));
+    }
+
+    function update_status_slm($where, $status_flm_slm)
+    {
+        $data = array(
+                $status_flm_slm => 'OK',  
+                'date_time_ok' => date('Y-m-d H:i:s'),
+            );
+        $this->db->update('tbl_slm', $data, array('terminal_id' => $where));
+    }
+
     function term_monitor_crm($user_term) {
         $query = $this->db->query("exec get_terminal_crm ?", $user_term);
         return $query->result();
@@ -52,4 +76,24 @@ class Postilion_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    function get_card_retain(){
+        return $this->db->get('v_card_retain')->result();
+    }
+
+    function get_offline_term(){
+        return $this->db->get('v_terminal_offline')->result();
+    }
+
+    function get_closed_term(){
+        return $this->db->get('v_terminal_closed')->result();
+    }
+
+    function get_inservice_term(){
+        return $this->db->get('v_terminal_inservice')->result();
+    }
+
+    function get_time_saldo() {
+        $query = $this->db->query("exec sp_history_saldo_getall");
+        return $query->result();
+    }
 }

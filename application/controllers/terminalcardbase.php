@@ -31,6 +31,44 @@ class Terminalcardbase extends MY_Controller
     echo json_encode($data);
   }
 
+  function card_retain_cardbase(){
+    $tmpl = array(
+      'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_card_retain_cardbase" width="100%">',
+      'thead_open'            => '<thead>',
+      'thead_close'           => '</thead>',
+      'heading_row_start'   => '<tr>',
+      'heading_row_end'     => '</tr>',
+      'heading_cell_start'  => '<th>',
+      'heading_cell_end'    => '</th>',
+      'row_alt_start'  => '<tr>',
+      'row_alt_end'    => '</tr>'
+    );
+    $this->table->set_template($tmpl);
+    $this->table->set_empty("&nbsp;");
+    $this->table->set_heading(
+              'ATM ID', 
+              'ATM Name', 
+              'Card Count', 
+              'Kelola'
+    );
+
+    $card_retain_data = $this->Postilion_model->get_card_retain();
+    // $terms_2 = $this->Postilion_model->term_monitor_offset_temp($this->session->userdata('logged_user_name'));
+
+    foreach ($card_retain_data as $data_card_retain)
+    {
+      
+      $this->table->add_row($data_card_retain->id, 
+                            $data_card_retain->short_name,
+                            $data_card_retain->count_card,
+                            $data_card_retain->kelola
+                          );  
+
+    }  
+
+
+  }
+
   function index()
   {
 
@@ -40,6 +78,7 @@ class Terminalcardbase extends MY_Controller
       'content_view'        => 'terminal/cardbase',
       'sub_header_title'    => 'Terminal Monitoring',
       'header_title'        => 'CARDBASE',
+      'alert_flm'           => false,
       'username'            => $this->session->userdata('logged_full_name'),
       'lastlogin'           => $this->session->userdata('logged_last_login'),
     );
@@ -144,10 +183,10 @@ class Terminalcardbase extends MY_Controller
 
       if ($str_condition == 'OK' &&  $mode[0] == '6.In Service') {
         if ($status_flm == 'Submit' || $status_flm == 'Modify') {
-          $this->Postilion_model->update_status_flm_slm('tbl_flm', $term->id, 'status_flm');
+          $this->Postilion_model->update_status_flm($term->id, 'status_flm');
         }
         if ($status_slm == 'Submit' || $status_slm == 'Modify') {
-          $this->Postilion_model->update_status_flm_slm('tbl_slm', $term->id, 'status_slm');
+          $this->Postilion_model->update_status_slm($term->id, 'status_slm');
         }
         $cell_flm = '';
         $cell_slm = '';
@@ -181,7 +220,7 @@ class Terminalcardbase extends MY_Controller
 
       $this->table->add_row(
         // $cell_extends,
-        $term->id,
+        '<a href="#">'.$term->id.'</a>',
         $term->short_name,
         $str_condition,
         '<div style=color:white;float:left;display:none>' . substr($mode[0], 0, 1) . '</div>' . $v_off,
@@ -198,6 +237,9 @@ class Terminalcardbase extends MY_Controller
     }
 
     $data['table_cardbase'] = $this->table->generate();
+
+    $this->card_retain_cardbase();
+    $data['table_card_retain'] = $this->table->generate();
 
     $terms = $this->Log_model->get_terminal();
 
@@ -262,8 +304,31 @@ class Terminalcardbase extends MY_Controller
             
         );
     $insert = $this->Postilion_model->save($data,$vTable);
+    $this->session->set_flashdata('messageinsertflm', "User ID has been inserted.");
     echo json_encode(array("status" => TRUE));
   }
+
+  public function ajax_update()
+    {
+        $vTable = $this->input->post('ajaxTable');
+                if($vTable == 'SLM'){
+                $status_flm_slm = 'status_slm';
+                }else{
+                $status_flm_slm = 'status_flm'; 
+                }
+
+        $data = array(
+                'atmi_problem' => $this->input->post('ajaxProblem'),
+                'vendor' => $this->input->post('ajaxVendor'),
+                'date_time_problem' => $this->input->post('txtdatetime'),
+                'description' => $this->input->post('txtdescription'),
+                'user_modify' => $this->input->post('ajaxUser'),
+                $status_flm_slm => $this->input->post('ajaxStatusFLM_SLM'),  
+                'date_modify' => $this->input->post('ajaxDateInsert'),
+            );
+        $this->Postilion_model->update(array('terminal_id' => $this->input->post('ajaxTerminalID')), $data);
+        echo json_encode(array("status" => TRUE));
+    }
 
   public function ajax_get_data_flm_slm()
   {
