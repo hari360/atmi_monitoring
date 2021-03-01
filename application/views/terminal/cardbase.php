@@ -6,7 +6,6 @@
 </div> -->
 
 
-
 <section class="content">
 
 <?php 
@@ -101,7 +100,7 @@
 
 <!-- Bootstrap modal -->
 <div class="modal fade" id="modal_form" role="dialog" style="font-size: 12px;">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-top" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -124,6 +123,7 @@
                     </select>
                 </div>
             </div>
+            <p></p>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p><b>Vendor</b></p>
                 <div class="col-md-9">
@@ -131,12 +131,40 @@
                 </select>
                 </div>
             </div>
+            <p></p>
             <div class="col-lg-12 col-md-12 col-sm-12">
+                <p><b>Datetime Problem</b></p>
+                <div class="col-md-9">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="test123"><i class="zmdi zmdi-calendar"></i></span>
+                        </div>
+                        <input type="text" class="form-control datetimepicker">
+                        
+                        <!-- <input type="text" class="form-control" placeholder="Please choose date & time..." name="txtdatetime"> -->
+                    </div>
+
+                    
+                    
+
+                    <!-- <div class="input-group clockpicker">
+                        <input type="text" class="form-control" value="09:30" name="txtdatetime">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div> -->
+
+                </div>
+            </div>
+
+
+            <!-- <div class="col-lg-12 col-md-12 col-sm-12">
                 <p><b>Date/Time Problem</b></p>
                 <div class="col-md-9">
                 <input name="txtdatetime" placeholder="Date/Time Problem" class="form-control" type="text" id="basic_example_1" >
                 </div>
-            </div>
+            </div> -->
+            <p></p>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p><b>Description</b></p>
                 <div class="col-md-9">

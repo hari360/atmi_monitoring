@@ -23,7 +23,7 @@ function add_person(value_this,prm1,prm2){
 
     if(prm2=='Modify' && (value_this=='FLM' || value_this=='SLM')){
       // alert(pTerminalID);
-      get_data_flm_slm(pTerminalID);
+      get_data_flm_slm(pTerminalID.split("|",1));
     }
 
     save_method = 'add';
@@ -31,7 +31,7 @@ function add_person(value_this,prm1,prm2){
     pStatusFlm = prm2;
     $('#form')[0].reset(); 
     $('#modal_form').modal('show');
-    $('.modal-title').text(value_this + " (Terminal ID : " + pTerminalID + ")"); 
+    $('.modal-title').text(value_this + " (Terminal ID : " + pTerminalID.split("|",1) + ")"); 
 }
 
 function get_data_flm_slm(terminal_id){
@@ -124,6 +124,18 @@ function format() {
 }
 
 $(document).ready(function(){
+
+  // $( "#dup_datetimepick" ).keyup(function() {
+
+  //   $(".datetimepicker").val($( "#dup_datetimepick" ).val());
+  //   // alert( "Handler for .change() called." );
+  // });
+
+  // $( ".datetimepicker" ).change(function() {
+
+  //   $("#dup_datetimepick").val($( ".datetimepicker" ).val());
+  //   // alert( "Handler for .change() called." );
+  // });
 
   $("body").toggleClass("ls-toggle-menu");
 

@@ -70,6 +70,7 @@ class Postilion_model extends CI_Model {
 
     function get_status_flm_slm($value_id,$status) {
         $this->db->select('status_'.$status);
+        $this->db->select('date_insert');
         $this->db->from('tbl_'.$status);
         $this->db->where('terminal_id', $value_id);
         $this->db->order_by("date_insert", "asc");

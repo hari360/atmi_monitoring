@@ -18,10 +18,18 @@
 <!-- JQuery DataTable Css -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
 
+<link href="<?php echo base_url() ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+<link href="<?php echo base_url() ?>assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
 <!-- Custom Css -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.min.css">
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/mystyle.css">
 
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/css/datetimepicker/bootstrap-clockpicker.css">
 </head>
 
 <body class="theme-blush right_icon_toggle ls-toggle-menu">
@@ -234,11 +242,28 @@
 <script src="<?php echo base_url() ?>assets/plugins/jquery-datatable/buttons/buttons.html5.min.js"></script>
 <script src="<?php echo base_url() ?>assets/plugins/jquery-datatable/buttons/buttons.print.min.js"></script>
 
-
 <script src="<?php echo base_url() ?>assets/js/pages/tables/jquery-datatable.js"></script>
 
+<script src="<?php echo base_url() ?>assets/plugins/momentjs/moment.js"></script> <!-- Moment Plugin Js --> 
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="<?php echo base_url() ?>assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> 
+
+<!-- <script src="assets/bundles/mainscripts.bundle.js"></script>Custom Js  -->
+<script src="<?php echo base_url() ?>assets/js/pages/forms/basic-form-elements.js"></script>
+<script src="<?php echo base_url() ?>assets/js/datetimepicker/bootstrap-clockpicker.js"></script>
 <script type="text/javascript">
     var baseURL = '<?php echo base_url(); ?>';
+
+    // $('.clockpicker').clockpicker({
+    //     donetext: 'Done'
+    // });
+
+    // $('.datetimepicker').bootstrapMaterialDatePicker({ 
+    //     // format : 'YYYY-MM-dd HH:mm',
+    //     format : 'yyyy-mm-dd',
+    // }); 
+
+    
 </script>
 <script src="<?php echo base_url() ?>assets/bundles/myfunction.js"></script>
 

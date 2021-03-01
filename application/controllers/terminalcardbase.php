@@ -134,15 +134,19 @@ class Terminalcardbase extends MY_Controller
 
       $status_slm = '';
       $status_flm = '';
+      $date_insert_flm = '';
+      $date_insert_slm = '';
 
       $result=$this->Postilion_model->get_status_flm_slm($term->id,'flm');
       foreach ($result as $v){
           $status_flm=$v->status_flm;
+          $date_insert_flm = $v->date_insert;
       }
 
       $result=$this->Postilion_model->get_status_flm_slm($term->id,'slm');
       foreach ($result as $v){
           $status_slm=$v->status_slm;
+          $date_insert_slm = $v->date_insert;
       }
 
       $mode = explode('|', $term->miscellaneous);
@@ -200,17 +204,17 @@ class Terminalcardbase extends MY_Controller
                      >';
         if ($status_flm == 'Submit' || $status_flm == 'Modify') {
 
-          $cell_flm = '<input id="flmid" type="button" onclick="add_person(this.value,' . "'" . $term->id . "','Modify'" . ')" title="' . $term->id . '" value="FLM" class="btn btn-danger" 
+          $cell_flm = '<input id="flmid" type="button" onclick="add_person(this.value,' . "'" . $term->id . "|" .$date_insert_flm. "','Modify'" . ')" title="' . $term->id . '" value="FLM" class="btn btn-danger" 
                onmouseover="this.title=\'\';" >';
-          $cell_slm = '<input id="slmid" type=button onclick=add_person(this.value,' . "'" . $term->id . "','Submit'" . ') value=SLM class="btn btn-warning" 
+          $cell_slm = '<input id="slmid" type=button onclick=add_person(this.value,' . "'" . $term->id . "|" .$date_insert_flm. "','Submit'" . ') value=SLM class="btn btn-warning" 
               >';
         }
         if ($status_slm == 'Submit' || $status_slm == 'Modify') {
 
-          $cell_flm = '<input id="flmid" type="button" onclick="add_person(this.value,' . "'" . $term->id . "','Modify'" . ')" title="' . $term->id . '" value="FLM" class="btn btn-danger" 
+          $cell_flm = '<input id="flmid" type="button" onclick="add_person(this.value,' . "'" . $term->id . "|" .$date_insert_slm. "','Modify'" . ')" title="' . $term->id . '" value="FLM" class="btn btn-danger" 
                onmouseover="this.title=\'\';" >';
 
-          $cell_slm = '<input id="slmid" type=button onclick="add_person(this.value,' . "'" . $term->id . "','Modify'" . ')" value=SLM class="btn btn-danger" 
+          $cell_slm = '<input id="slmid" type=button onclick="add_person(this.value,' . "'" . $term->id . "|" .$date_insert_slm. "','Modify'" . ')" value=SLM class="btn btn-danger" 
               >';
         }
         //die($status_flm);
@@ -326,7 +330,8 @@ class Terminalcardbase extends MY_Controller
                 $status_flm_slm => $this->input->post('ajaxStatusFLM_SLM'),  
                 'date_modify' => $this->input->post('ajaxDateInsert'),
             );
-        $this->Postilion_model->update(array('terminal_id' => $this->input->post('ajaxTerminalID')), $data);
+        $param = explode('|', $this->input->post('ajaxTerminalID'));
+        $this->Postilion_model->update(array('terminal_id' => $param[0],'date_insert' => $param[1]), $data);
         echo json_encode(array("status" => TRUE));
     }
 
