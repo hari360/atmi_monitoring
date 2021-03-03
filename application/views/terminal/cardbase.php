@@ -54,6 +54,7 @@
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_terminal">Terminal</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_card_retain">Card Retain</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_log">Log</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_count_trx">Count Transaction</a></li>
                         </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_terminal">
@@ -68,7 +69,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane file_manager" id="tab_card_retain">
+                    <div class="tab-pane" id="tab_card_retain">
                         <div class="container-fluid">
                             <div class="row clearfix">
                                 <div class="body" style="width: 100%;">
@@ -79,6 +80,7 @@
                             </div> 
                         </div>
                     </div>
+
                     <div class="tab-pane" id="tab_log">
                         <div class="container-fluid">        
                             <div class="row clearfix">
@@ -90,6 +92,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-pane" id="tab_count_trx">
+                        <div class="container-fluid">
+                            <div class="row clearfix">
+                                <div class="body" style="width: 100%;">
+                                    <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
+                                    <?php echo ! empty($table_count_trx_atm) ? $table_count_trx_atm : '';?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -139,7 +154,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="test123"><i class="zmdi zmdi-calendar"></i></span>
                         </div>
-                        <input type="text" class="form-control datetimepicker">
+                        <input type="text" class="form-control datetimepicker" name="txtdatetime">
                         
                         <!-- <input type="text" class="form-control" placeholder="Please choose date & time..." name="txtdatetime"> -->
                     </div>

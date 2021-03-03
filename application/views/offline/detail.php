@@ -9,7 +9,9 @@
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_offline">Offline</a></li>
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_closed">Closed</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_inservice">In Service</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_faulty">Faulty</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_idle">Tran Idle</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_saldo_min">Saldo < 2M</a></li>
                         </ul>
                 <div class="tab-content">
                     <div class="tab-pane" id="tab_offline">
@@ -46,12 +48,34 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane" id="tab_faulty">
+                        <div class="container-fluid">        
+                            <div class="row clearfix">
+                                <div class="body" style="width: 100%;">
+                                    <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
+                                        <?php echo ! empty($table_faulty) ? $table_faulty : '';?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="tab-pane" id="tab_idle">
                         <div class="container-fluid">        
                             <div class="row clearfix">
                                 <div class="body" style="width: 100%;">
                                     <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
                                         <?php echo ! empty($table_idle) ? $table_idle : '';?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_saldo_min">
+                        <div class="container-fluid">        
+                            <div class="row clearfix">
+                                <div class="body" style="width: 100%;">
+                                    <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
+                                        <?php echo ! empty($table_saldo_min) ? $table_saldo_min : '';?>
                                     </div>
                                 </div>
                             </div>

@@ -68,8 +68,14 @@ class Offline extends MY_Controller
       $this->detail_inservice();
       $data['table_inservice'] = $this->table->generate();
 
+      $this->detail_faulty();
+      $data['table_faulty'] = $this->table->generate();
+
       $this->detail_idle();
       $data['table_idle'] = $this->table->generate();
+
+      $this->detail_saldo();
+      $data['table_saldo_min'] = $this->table->generate();
 
       $this->load->view('template', $data);
 
@@ -168,9 +174,9 @@ class Offline extends MY_Controller
 
   }
 
-  function detail_idle(){
+  function detail_faulty(){
     $tmpl = array(
-        'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_term_idle" width="100%">',
+        'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_faulty" width="100%">',
         'thead_open'            => '<thead>',
         'thead_close'           => '</thead>',
         'heading_row_start'   => '<tr>',
@@ -186,22 +192,108 @@ class Offline extends MY_Controller
                     'No', 
                     'ATM ID', 
                     'ATM Name', 
-                    'Mode', 
+                    'Condition', 
+                    'Faulty',
                     'Kelola'
       );
   
-      $idle_data = $this->Postilion_model->get_time_saldo();
+      $faulty_data = $this->Postilion_model->get_faulty_term();
   
       $i = 0;
-      foreach ($idle_data as $data_term_idle)
+      foreach ($faulty_data as $data_faulty)
       {
         
         $this->table->add_row(++$i, 
-                              $data_term_idle->id, 
-                              $data_term_idle->short_name,
-                              $data_term_idle->mode,
-                              $data_term_idle->kelola
-                            );  
+                                  $data_faulty->id, 
+                                  $data_faulty->short_name,
+                                  $data_faulty->status = 'Faulty',
+                                  $data_faulty->faulty,
+                                  $data_faulty->kelola
+                              );  
+  
+      }  
+
+
+  }
+
+  function detail_idle(){
+    $tmpl = array(
+      'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_idle_term" width="100%">',
+      'thead_open'            => '<thead>',
+      'thead_close'           => '</thead>',
+      'heading_row_start'   => '<tr>',
+      'heading_row_end'     => '</tr>',
+      'heading_cell_start'  => '<th>',
+      'heading_cell_end'    => '</th>',
+      'row_alt_start'  => '<tr>',
+      'row_alt_end'    => '</tr>'
+    );
+    $this->table->set_template($tmpl);
+    $this->table->set_empty("&nbsp;");
+
+    $time_saldo = $this->Postilion_model->get_time_saldo();
+    $this->table->set_heading(
+              'ATM ID', 
+              'ATM Name', 
+              'Admin', 
+              substr($time_saldo->saldo_awal, 0,19), 
+              substr($time_saldo->saldo_mid, 0,19),
+              substr($time_saldo->saldo_akhir, 0,19), 
+              'Difference'
+    );
+
+    $data_terminal_saldo = $this->Postilion_model->get_terminal_saldo();
+
+    foreach ($data_terminal_saldo as $data_term_saldo)
+    {
+      
+      $this->table->add_row(
+                            $data_term_saldo->terminal_id, 
+                            $data_term_saldo->terminal_name,
+                            number_format($data_term_saldo->admin_bars),
+                            number_format($data_term_saldo->saldo_awal),
+                            number_format($data_term_saldo->saldo_mid),
+                            number_format($data_term_saldo->saldo),
+                            number_format($data_term_saldo->trx)
+                          );  
+
+    }  
+  }
+
+  function detail_saldo(){
+    $tmpl = array(
+        'table_open'    => '<table class="table table-bordered table-striped table-hover" id="dt_saldo_min" width="100%">',
+        'thead_open'            => '<thead>',
+        'thead_close'           => '</thead>',
+        'heading_row_start'   => '<tr>',
+        'heading_row_end'     => '</tr>',
+        'heading_cell_start'  => '<th>',
+        'heading_cell_end'    => '</th>',
+        'row_alt_start'  => '<tr>',
+        'row_alt_end'    => '</tr>'
+      );
+      $this->table->set_template($tmpl);
+      $this->table->set_empty("&nbsp;");
+      $this->table->set_heading(
+                    'No', 
+                    'ATM ID', 
+                    'ATM Name', 
+                    'Nominal', 
+                    'Kelola'
+      );
+  
+      $saldo_min_data = $this->Postilion_model->get_terminal_saldo_detail();
+  
+      $i = 0;
+      foreach ($saldo_min_data as $data_saldo)
+      {
+        
+        $this->table->add_row(++$i, 
+                                  $data_saldo->id, 
+                                  $data_saldo->short_name,
+                                  $data_saldo->vValueBar,
+                                  $data_saldo->kelola
+                              );  
   
       }  
 

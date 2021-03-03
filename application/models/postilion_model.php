@@ -93,7 +93,21 @@ class Postilion_model extends CI_Model {
         return $this->db->get('v_terminal_inservice')->result();
     }
 
+    function get_faulty_term(){
+        return $this->db->get('v_terminal_faulty')->result();
+    }
+
+    function get_terminal_saldo_detail(){
+        return $this->db->get('v_terminal_saldo_min')->result();
+    }
+    
+
     function get_time_saldo() {
+        $query = $this->db->query("exec sp_history_saldo_gettime");
+        return $query->row();
+    }
+
+    function get_terminal_saldo() {
         $query = $this->db->query("exec sp_history_saldo_getall");
         return $query->result();
     }
