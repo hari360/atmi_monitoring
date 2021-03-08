@@ -8,7 +8,7 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 <title>Monitoring ATMI - Dashboard</title>
-<link rel="icon" href="<?php echo base_url() ?>assets/images/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+<link rel="icon" href="<?php echo base_url() ?>assets/images/logo-title-alto.ico" type="image/x-icon"> <!-- Favicon-->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/charts-c3/plugin.css"/>
@@ -21,6 +21,8 @@
 <link href="<?php echo base_url() ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
 <link href="<?php echo base_url() ?>assets/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/select2/select2.css" />
 
 <!-- Custom Css -->
 <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.min.css">
@@ -51,17 +53,17 @@
         <ul class="list">
             <li>
                 <div class="user-info">
-                    <a class="image" href="profile.html"><img src="<?php echo base_url() ?>assets/images/profile_av.jpg" alt="User"></a>
+                    <a class="image" href="profile.html"><img src="<?php echo base_url() ?>assets/images/avatar/<?php echo $this->session->userdata('logged_avatar');?>" alt="User"></a>
                     <div class="detail">
-                        <h4>Michael</h4>
-                        <small>Super Admin</small>                        
+                        <h4><?php echo $this->session->userdata('logged_full_name');?></h4>
+                        <small><?php echo $this->session->userdata('logged_role');?></small>                        
                     </div>
                 </div>
             </li>
             <li class="active open"><a href="<?php echo base_url();?>dashboard"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
             <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
                 <ul class="ml-menu">                  
-                    <li><a href="<?php echo base_url();?>log/terminal">Edit</a></li> 
+                    <li><a href="<?php echo base_url();?>log/terminal">Profile</a></li> 
                     <li><a href="<?php echo base_url();?>login/logout">LogOut</a></li>               
                 </ul>
             </li>
@@ -69,7 +71,8 @@
                 <ul class="ml-menu">
                     <!-- <li><a href="<?php echo base_url();?>log/terminal">Log Terminal</a></li> -->
                     <li><a href="<?php echo base_url();?>terminalcardbase">Cardbase</a></li>
-                    <li><a href="<?php echo base_url();?>terminalcrm">Cardless</a></li>                    
+                    <li><a href="<?php echo base_url();?>terminalcrm">Cardless</a></li>   
+                    <li><a href="<?php echo base_url();?>reportiso">Report Iso</a></li>                    
                 </ul>
             </li>
 
@@ -259,6 +262,9 @@
 <!-- <script src="assets/bundles/mainscripts.bundle.js"></script>Custom Js  -->
 <script src="<?php echo base_url() ?>assets/js/pages/forms/basic-form-elements.js"></script>
 <script src="<?php echo base_url() ?>assets/js/datetimepicker/bootstrap-clockpicker.js"></script>
+<script src="<?php echo base_url() ?>assets/plugins/select2/select2.min.js"></script> <!-- Select2 Js -->
+<script src="<?php echo base_url() ?>assets/js/pages/forms/advanced-form-elements.js"></script> 
+
 <script type="text/javascript">
     var baseURL = '<?php echo base_url(); ?>';
 
@@ -274,6 +280,7 @@
     
 </script>
 <script src="<?php echo base_url() ?>assets/bundles/myfunction.js"></script>
+<script src="<?php echo base_url() ?>assets/bundles/uploadcsv.js"></script>
 
 </body>
 

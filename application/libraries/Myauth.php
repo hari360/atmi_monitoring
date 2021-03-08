@@ -75,6 +75,7 @@ class Myauth
         $this->CI->db->select('last_login');
         $this->CI->db->select('avatar');
         $this->CI->db->select('prefix_atm');
+        $this->CI->db->select('role');
         $this->CI->db->from('v_user_login');
   		$this->CI->db->where('user_name', $login['user']);
         $this->CI->db->where('password', md5($login['pass']));
@@ -91,11 +92,15 @@ class Myauth
                 $v_full_name        = $val->full_name;
                 $v_last_login       = $val->last_login;
                 $prefix_access[]    = $val->prefix_atm;
+                $avatar             = $val->avatar;
+                $role               = $val->role;
             }
             $this->CI->session->set_userdata('logged_user_name',$v_user_name);
             $this->CI->session->set_userdata('logged_full_name', $v_full_name);
             $this->CI->session->set_userdata('logged_last_login', $v_last_login);  
-            $this->CI->session->set_userdata('logged_prefix_access', $prefix_access);    
+            $this->CI->session->set_userdata('logged_prefix_access', $prefix_access);
+            $this->CI->session->set_userdata('logged_avatar', $avatar);
+            $this->CI->session->set_userdata('logged_role', $role);    
             
             return TRUE;
         }

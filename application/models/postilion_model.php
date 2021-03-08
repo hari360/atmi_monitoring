@@ -97,6 +97,10 @@ class Postilion_model extends CI_Model {
         return $this->db->get('v_terminal_faulty')->result();
     }
 
+    function get_faulty_term_temp(){
+        return $this->db->get('v_terminal_faulty')->result();
+    }
+
     function get_terminal_saldo_detail(){
         return $this->db->get('v_terminal_saldo_min')->result();
     }
@@ -110,5 +114,15 @@ class Postilion_model extends CI_Model {
     function get_terminal_saldo() {
         $query = $this->db->query("exec sp_history_saldo_getall");
         return $query->result();
+    }
+
+    function insert_from_csv($data)
+    {
+        $this->db->insert_batch('tbl_terminal_upload', $data);
+        return $this->db->insert_id();
+    }
+
+    function get_data_upload($id_upload){
+        return $this->db->get_where('tbl_terminal_upload',array('id_upload' => $id_upload))->result();
     }
 }
