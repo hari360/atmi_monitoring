@@ -51,13 +51,14 @@
         <div class="col-lg-12">
             <div class="card">
                         <ul class="nav nav-tabs pl-0 pr-0">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_terminal">Terminal</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_terminal">Terminal</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_card_retain">Card Retain</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_log">Log</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_count_trx">Count Transaction</a></li>
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_postilion">Postilion</a></li>
                         </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="tab_terminal">
+                    <div class="tab-pane" id="tab_terminal">
                         <div class="container-fluid">
                             <div class="row clearfix">
                                 <div class="body" style="width: 100%;">
@@ -103,6 +104,211 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="tab-pane active" id="tab_postilion" >
+                    <div class="container-fluid">
+            <!-- Color Pickers -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Batch</strong> Viewer</h2>
+                            
+                        </div>
+                        <div class="body">
+                            <p>Please complete the form below. Mandatory fields marked *</p>
+                            <?php
+                                $attributes = array('name' => 'batch_viewer_form'
+                                                    ,'id' => 'myformviewer'
+                                                    ,'autocomplete' => 'off'
+                                                    ,'class' => 'card auth_form');
+                                echo form_open('terminalcardbase/batch_terminal', $attributes);
+                            ?>
+                            <div class="row clearfix">
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Select Date</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="test123"><i class="zmdi zmdi-calendar"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control datepicker" name="txtdatetime_batch">
+                                            
+                                            <!-- <input type="text" class="form-control" placeholder="Please choose date & time..." name="txtdatetime"> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Terminal ID</label>
+                                        <div class="input-group colorpicker">
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select" id="sProblem" name="txtterminalname">
+                                            <?php 
+                                                echo $list_terminal;
+                                            ?>
+                                            <!-- <option value="">Select Problem</option>
+                                            <option value="1. CASH HANDLER" style="font-size: 12px;">1. CASH HANDLER</option>
+                                            <option value="2. RECEIPT FAULTY">2. RECEIPT FAULTY</option>
+                                            <option value="3. CARD READER FAULTY">3. CARD READER FAULTY</option>
+                                            <option value="4. SOFTWARE">4. SOFTWARE</option>
+                                            <option value="5. DOWN">5. DOWN</option> -->
+                                        </select>
+                                            <!-- <div class="input-group-append">
+                                                <span class="input-group-text"><span class="input-group-addon"> <i></i> </span></span>
+                                            </div> -->
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                    <button id="" type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Submit</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+
+                    <div class="container-fluid">
+            <!-- Color Pickers -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Terminal Saldo</strong> Viewer</h2>
+                            
+                        </div>
+                        <div class="body">
+                            <p>Please complete the form below. Mandatory fields marked *</p>
+                            <?php
+                                $attributes = array('name' => 'batch_viewer_form'
+                                                    ,'id' => 'myformviewer'
+                                                    ,'autocomplete' => 'off'
+                                                    ,'class' => 'card auth_form');
+                                echo form_open('terminalcardbase/batch_terminal', $attributes);
+                            ?>
+                            <div class="row clearfix">
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Select Date</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="test123"><i class="zmdi zmdi-calendar"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control datepicker" name="txtdatetime_batch">
+                                            
+                                            <!-- <input type="text" class="form-control" placeholder="Please choose date & time..." name="txtdatetime"> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Terminal ID</label>
+                                        <div class="input-group colorpicker">
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select" id="sProblem" name="txtterminalname">
+                                            <?php 
+                                                echo $list_terminal;
+                                            ?>
+                                            <!-- <option value="">Select Problem</option>
+                                            <option value="1. CASH HANDLER" style="font-size: 12px;">1. CASH HANDLER</option>
+                                            <option value="2. RECEIPT FAULTY">2. RECEIPT FAULTY</option>
+                                            <option value="3. CARD READER FAULTY">3. CARD READER FAULTY</option>
+                                            <option value="4. SOFTWARE">4. SOFTWARE</option>
+                                            <option value="5. DOWN">5. DOWN</option> -->
+                                        </select>
+                                            <!-- <div class="input-group-append">
+                                                <span class="input-group-text"><span class="input-group-addon"> <i></i> </span></span>
+                                            </div> -->
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                    <button id="" type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Submit</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
+
+                    <div class="container-fluid">
+            <!-- Color Pickers -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Get a Cardholder Did Not Take</strong> Viewer</h2>
+                            
+                        </div>
+                        <div class="body">
+                            <p>Please complete the form below. Mandatory fields marked *</p>
+                            <?php
+                                $attributes = array('name' => 'batch_viewer_form'
+                                                    ,'id' => 'myformviewer'
+                                                    ,'autocomplete' => 'off'
+                                                    ,'class' => 'card auth_form');
+                                echo form_open('terminalcardbase/batch_terminal', $attributes);
+                            ?>
+                            <div class="row clearfix">
+                            <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Select Date</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="test123"><i class="zmdi zmdi-calendar"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control datepicker" name="txtdatetime_batch">
+                                            
+                                            <!-- <input type="text" class="form-control" placeholder="Please choose date & time..." name="txtdatetime"> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Terminal ID</label>
+                                        <div class="input-group colorpicker">
+                                        <select class="form-control show-tick ms select2" data-placeholder="Select" id="sProblem" name="txtterminalname">
+                                            <?php 
+                                                echo $list_terminal;
+                                            ?>
+                                            <!-- <option value="">Select Problem</option>
+                                            <option value="1. CASH HANDLER" style="font-size: 12px;">1. CASH HANDLER</option>
+                                            <option value="2. RECEIPT FAULTY">2. RECEIPT FAULTY</option>
+                                            <option value="3. CARD READER FAULTY">3. CARD READER FAULTY</option>
+                                            <option value="4. SOFTWARE">4. SOFTWARE</option>
+                                            <option value="5. DOWN">5. DOWN</option> -->
+                                        </select>
+                                            <!-- <div class="input-group-append">
+                                                <span class="input-group-text"><span class="input-group-addon"> <i></i> </span></span>
+                                            </div> -->
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                    <button id="" type="submit" class="btn btn-raised btn-primary btn-round waves-effect">Submit</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                     </div>
 
                 </div>

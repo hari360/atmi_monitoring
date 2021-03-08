@@ -147,6 +147,14 @@ $(document).ready(function(){
     // scrollY:        "350px",
   });
 
+  var table_cardbase = $('#dt_batch_viewer').DataTable({
+    iDisplayLength:100,
+    paging: true, 
+    info: true, 
+    searching: true,
+    // scrollY:        "350px",
+  });
+
   var table_card_retain = $('#dt_card_retain_cardbase').DataTable({
     iDisplayLength:100,
     paging: true, 

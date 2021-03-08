@@ -125,4 +125,13 @@ class Postilion_model extends CI_Model {
     function get_data_upload($id_upload){
         return $this->db->get_where('tbl_terminal_upload',array('id_upload' => $id_upload))->result();
     }
+
+    function get_terminal_atm(){
+        $this->db->select('terminal_name');
+        return $this->db->get('tbl_terminal')->result();
+    }
+
+    function term_batch_viewer($terminal){
+        return $this->db->get_where('tbl_terminal',array('terminal_name' => $terminal))->result();
+    }
 }

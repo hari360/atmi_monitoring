@@ -114,8 +114,70 @@ class Terminalcardbase extends MY_Controller
 
   }
 
+  function batch_terminal(){
+    $data_batch_viewer = $this->Postilion_model->term_batch_viewer($this->input->post('txtterminalname'));
+
+    $tmpl = array(
+      'table_open'    => '<table class="table table-bordered table-striped table-hover nowrap" id="dt_batch_viewer" width="100%">',
+      'thead_open'            => '<thead>',
+      'thead_close'           => '</thead>',
+      'heading_row_start'   => '<tr>',
+      'heading_row_end'     => '</tr>',
+      'heading_cell_start'  => '<th>',
+      'heading_cell_end'    => '</th>',
+      'row_alt_start'  => '<tr>',
+      'row_alt_end'    => '</tr>'
+    );
+    $this->table->set_template($tmpl);
+    $this->table->set_empty("&nbsp;");
+
+    // $this->table->set_heading('No', 'ATM ID', 'ATM Name', 'Item End', 'Value Bar End','Time','Item Begin','Value Bar Begin','Date Begin','CIT');
+
+    $this->table->set_heading(
+      'Terminal Id',
+      'Terminal Name',
+      'Terminal City',
+      'Location',
+    );
+
+    foreach ($data_batch_viewer as $dt_batch_viewer)
+    {
+
+    $this->table->add_row(
+        $dt_batch_viewer->terminal_id,
+        $dt_batch_viewer->terminal_name,
+        $dt_batch_viewer->terminal_city,
+        $dt_batch_viewer->location,
+      );
+
+    }
+
+    $data = array(
+      'title'               => 'Monitoring-Cardbase',
+      'header_view'         => 'header_view',
+      'content_view'        => 'batch/contenviewer',
+      'sub_header_title'    => 'Terminal Monitoring',
+      'header_title'        => 'CARDBASE',
+      'alert_flm'           => false,
+      'username'            => $this->session->userdata('logged_full_name'),
+      'lastlogin'           => $this->session->userdata('logged_last_login'),
+      'table_batch_viewer'  => $this->table->generate(),
+    );
+
+    $this->load->view('template', $data);
+    // var_dump($test);
+  }
+
   function index()
   {
+
+    $terminal = $this->Postilion_model->get_terminal_atm();
+    $term = '<option value="">Select Problem</option>';
+
+    foreach ($terminal as $data_terminal)
+    {
+        $term .= '<option value="'.$data_terminal->terminal_name.'" style="font-size: 12px;">'.$data_terminal->terminal_name.'</option>';
+    }
 
     $data = array(
       'title'               => 'Monitoring-Cardbase',
@@ -126,7 +188,12 @@ class Terminalcardbase extends MY_Controller
       'alert_flm'           => false,
       'username'            => $this->session->userdata('logged_full_name'),
       'lastlogin'           => $this->session->userdata('logged_last_login'),
+      'list_terminal'       => $term,
     );
+
+    
+
+
     
     $tmpl = array(
       'table_open'    => '<table class="table table-bordered table-striped table-hover nowrap" id="dt_terminal_cardbase" width="100%">',
