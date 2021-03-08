@@ -72,6 +72,14 @@
                     <li><a href="<?php echo base_url();?>terminalcrm">Cardless</a></li>                    
                 </ul>
             </li>
+
+            <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>Postilion Cardbase</span></a>
+                <ul class="ml-menu">
+                    <!-- <li><a href="<?php echo base_url();?>log/terminal">Log Terminal</a></li> -->
+                    <li><a href="<?php echo base_url();?>postilioncardbase">Batch Viewer</a></li>
+                    <li><a href="<?php echo base_url();?>terminalcrm">Cardless</a></li>                    
+                </ul>
+            </li>
             <!-- <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Terminal</span></a>
                 <ul class="ml-menu">
                     <li><a href="project-list.html">Projects List</a></li>

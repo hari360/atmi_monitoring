@@ -8,6 +8,14 @@ $(function () {
         // time:false
     });
 
+    $('.date').bootstrapMaterialDatePicker({ 
+        weekStart : 0,
+        clearButton: true,
+        triggerEvent: 'dblclick',
+        time: false 
+    
+    });
+
     $('.datepicker').bootstrapMaterialDatePicker({
         format: 'dddd DD MMMM YYYY',
         clearButton: true,

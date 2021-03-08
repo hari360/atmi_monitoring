@@ -144,7 +144,6 @@ $(document).ready(function(){
     paging: true, 
     info: true, 
     searching: true,
-    // scrollY:        "350px",
   });
 
   var table_card_retain = $('#dt_card_retain_cardbase').DataTable({
@@ -153,25 +152,15 @@ $(document).ready(function(){
     info: true, 
     searching: true,
     columnDefs: [
-      { width: '20%', targets: 0 }
+      { width: '10%', targets: 0,
+         targets: [0,1,2], // your case first column
+      className: "text-center",
+      width: "4%" }
     ],
     fixedColumns: true,
-    // scrollY:        "350px",
   });
 
-  var table_count_trx_atm = $('#dt_count_trx_cardbase').DataTable({
-    iDisplayLength:20,
-    paging: true, 
-    info: true, 
-    searching: true,
-    columnDefs: [
-      { width: '20%', targets: 0 }
-    ],
-    fixedColumns: true,
-    // scrollY:        "350px",
-  });
-
-  var table_offline = $('#dt_offline').DataTable({
+  var table_card_retain = $('#dt_offline').DataTable({
     iDisplayLength:100,
     paging: true, 
     info: true, 
@@ -204,29 +193,7 @@ $(document).ready(function(){
     fixedColumns: true,
   });
 
-  var table_inservice = $('#dt_faulty').DataTable({
-    iDisplayLength:100,
-    paging: true, 
-    info: true, 
-    searching: true,
-    columnDefs: [
-      { width: '20%', targets: 0 }
-    ],
-    fixedColumns: true,
-  });
-
-  var table_inservice = $('#dt_idle_term').DataTable({
-    iDisplayLength:100,
-    paging: true, 
-    info: true, 
-    searching: true,
-    columnDefs: [
-      { width: '20%', targets: 0 }
-    ],
-    fixedColumns: true,
-  });
-
-  var table_inservice = $('#dt_saldo_min').DataTable({
+  var table_inservice = $('#dt_term_idle').DataTable({
     iDisplayLength:100,
     paging: true, 
     info: true, 
@@ -247,11 +214,10 @@ $(document).ready(function(){
   });
 
   var table = $('#dt_terminal_log').DataTable({
-      iDisplayLength:100,
+      iDisplayLength:80,
       paging: true, 
       info: true, 
       searching: true,
-      // scrollY:        "350px",
   });
 
   $('#dt_terminal_log tbody').on('click', 'td.details-control', function () {

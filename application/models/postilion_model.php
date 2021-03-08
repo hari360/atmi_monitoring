@@ -102,10 +102,10 @@ class Postilion_model extends CI_Model {
     }
     
 
-    function get_time_saldo() {
-        $query = $this->db->query("exec sp_history_saldo_gettime");
-        return $query->row();
-    }
+    // function get_time_saldo() {
+    //     $query = $this->db->query("exec sp_history_saldo_gettime");
+    //     return $query->row();
+    // }
 
     function get_terminal_saldo() {
         $query = $this->db->query("exec sp_history_saldo_getall");

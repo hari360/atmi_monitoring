@@ -47,27 +47,45 @@
     </div> -->
 
 
-    <div class="row clearfix">
-        <div class="col-lg-12">
-            <div class="card">
+<div class="row clearfix">
+    <div class="col-lg-12">
+        <div class="card">
                         <ul class="nav nav-tabs pl-0 pr-0">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_terminal">Terminal</a></li>
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#tab_terminal">Batch Viewer</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_card_retain">Card Retain</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_log">Log</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_count_trx">Count Transaction</a></li>
                         </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab_terminal">
-                        <div class="container-fluid">
-                            <div class="row clearfix">
-                                <div class="body" style="width: 100%;">
-                                    <div class="table-responsive" style="font-size: 12px;font-family:Arial, Helvetica, sans-serif">
-                                    <?php echo ! empty($table_cardbase) ? $table_cardbase : '';?>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab_terminal">
+                <div class="container-fluid">
+                    <div class="row clearfix">
+                        <div class="body" style="width: 100%;">
+                             <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <p><b>Datetime Problem</b></p>
+                                <div class="col-md-2">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="test123">
+                                            <i class="zmdi zmdi-calendar"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control date" 
+                                        name="txtdatetime">
+                                        <div class="modal-footer">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+          </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
+                </div>
+            </div>
+<br></br><br></br><br></br><br></br>
+<br></br><br></br><br></br><br></br>
 
                     <div class="tab-pane" id="tab_card_retain">
                         <div class="container-fluid">

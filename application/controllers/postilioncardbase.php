@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Terminalcardbase extends MY_Controller
+class Postilioncardbase extends MY_Controller
 {
 
   function __construct()
@@ -130,9 +130,10 @@ class Terminalcardbase extends MY_Controller
     $data = array(
       'title'               => 'Monitoring-Cardbase',
       'header_view'         => 'header_view',
-      'content_view'        => 'terminal/cardbase',
+      'content_view'        => 'postilion/cardbase',
       'sub_header_title'    => 'Terminal Monitoring',
       'header_title'        => 'CARDBASE',
+      'form_action'         => site_url('postilioncardbase/view_batch'),
       'alert_flm'           => false,
       'username'            => $this->session->userdata('logged_full_name'),
       'lastlogin'           => $this->session->userdata('logged_last_login'),
@@ -155,7 +156,7 @@ class Terminalcardbase extends MY_Controller
       'ATM ID',
       'Terminal Name',
       'Condition',
-      'Mode',
+      'Mode Batch',
       'Denom',
       'Admin',
       'Amount Bar',
