@@ -118,11 +118,52 @@ class Postilioncardbase extends MY_Controller
                             $data_card_retain->count_card,
                             $data_card_retain->kelola
                           );  
-
     }  
-
-
   }
+
+   function view_batch()
+    {
+       //$this->validmodul();
+		$data = array(
+      'title'               => 'Monitoring-Cardbase',
+      'header_view'         => 'header_view',
+      'content_view'        => 'postilion/cardbase',
+      'sub_header_title'    => 'Terminal Monitoring',
+      'header_title'        => 'Terminal Batch',
+      'form_action'         => site_url('postilioncardbase/view_batch'),
+      'alert_flm'           => false,
+      'username'            => $this->session->userdata('logged_full_name'),
+      'lastlogin'           => $this->session->userdata('logged_last_login'),
+    );
+
+        //$v_id = $this->input->post('TermID');
+        $v_date = $this->input->post('test123');
+
+        //die($v_date);
+         if($v_date==''){
+            $data['main_view'] = 'postilion/view_batch';
+
+		// Set validation rules
+        $this->form_validation->set_rules('TermID', 'Terminal Id', 'required|numeric|exact_length[8]');
+		
+		// jika proses validasi sukses
+		if ($this->form_validation->run() == TRUE)
+		{
+            $data['short_name'] = $this->Postilion_model->search_terminal_name($this->input->post('TermID'));
+            $data['list2'] = $this->Postilion_model->batch_viewer($this->input->post('TermID'), $this->session->userdata('logged_user_group'));
+		}
+		else
+		{
+    		// Data untuk mengisi form
+            $data['list'] = $this->Postilion_model->term_monitor($this->session->userdata('logged_user_group'))->result();
+		}
+		// Load default view
+		$this->load->view('template', $data);        
+    }else{
+        $this->view_replenish($v_date);
+
+        }
+    }
 
   function index()
   {
@@ -132,12 +173,14 @@ class Postilioncardbase extends MY_Controller
       'header_view'         => 'header_view',
       'content_view'        => 'postilion/cardbase',
       'sub_header_title'    => 'Terminal Monitoring',
-      'header_title'        => 'CARDBASE',
+      'header_title'        => 'Terminal Batch',
       'form_action'         => site_url('postilioncardbase/view_batch'),
       'alert_flm'           => false,
       'username'            => $this->session->userdata('logged_full_name'),
       'lastlogin'           => $this->session->userdata('logged_last_login'),
     );
+
+    
     
     $tmpl = array(
       'table_open'    => '<table class="table table-bordered table-striped table-hover nowrap" id="dt_terminal_cardbase" width="100%">',

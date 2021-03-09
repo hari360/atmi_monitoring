@@ -60,9 +60,12 @@
             <div class="tab-pane active" id="tab_terminal">
                 <div class="container-fluid">
                     <div class="row clearfix">
+                        <div class="page-title">
+            <h1><?php echo isset($header_title) ? $header_title : '';?></h1>
+        </div>
                         <div class="body" style="width: 100%;">
                              <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <p><b>Datetime Problem</b></p>
+                                    <p><b>Select Date</b></p>
                                 <div class="col-md-2">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -71,21 +74,20 @@
                                         </div>
                                         <input type="text" class="form-control date" 
                                         name="txtdatetime">
-                                        <div class="modal-footer">
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Submit</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-          </div>
-          </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
+                            <div class="form-group">
+                                    <label class="control-label col-md-2"></label>
+                                    <div class="col-md-7">
+                                        <input type="submit" class="btn btn-primary" name="submit" id="submit" />
+                                    
+                                    </div>
+                                </div> 
                         </div>
                     </div>
                 </div>
             </div>
-<br></br><br></br><br></br><br></br>
-<br></br><br></br><br></br><br></br>
 
                     <div class="tab-pane" id="tab_card_retain">
                         <div class="container-fluid">
